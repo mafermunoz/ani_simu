@@ -81,9 +81,10 @@ for i,x in enumerate(poisson_dist[:100]):
             #print(dipole_dist[dummy2,2])
             aa=search_radius[search_radius==dipole_dist[dummy2,2]]
 
-        c1=SkyCoord(dipole_dist[dummy2,1]*u.degree,dipole_dist[dummy2,0]*u.degree,frame='galactic')
+        c1=SkyCoord(dipole_dist[dummy2,0]*u.degree,dipole_dist[dummy2,1]*u.degree,frame='galactic')
         print(c1)
         offset=c2.spherical_offsets_to(c1)
+        print(offset)
         ra[ctracks]=dipole_dist[dummy2,0]
         dec[ctracks]=dipole_dist[dummy2,1]
         theta[ctracks]=offset[0].degree
