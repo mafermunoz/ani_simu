@@ -75,7 +75,7 @@ for i,x in enumerate(poisson_dist[:100]):
         while (dipole_dist[dummy2,2] in search_radius)==False:
             dummy2=np.random.randint(len_list)
 
-        c1=SkyCoord(dipole_dist[dummy2,0]*u.rad,dipole_dist[dummy2,1]*u.rad,frame='fk5')
+        c1=SkyCoord(dipole_dist[dummy2,0]*u.deg,dipole_dist[dummy2,1]*u.deg,frame='fk5')
         offset=c2.spherical_offsets_to(c1)
         ra[ctracks]=dipole_dist[dummy2,0]
         dec[ctracks]=dipole_dist[dummy2,1]
