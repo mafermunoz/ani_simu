@@ -81,7 +81,8 @@ for i,x in enumerate(poisson_dist[:100]):
         dec[ctracks]=dipole_dist[dummy2,1]
         theta[ctracks]=offset[0].rad
         phi[ctracks]=offset[1].rad
-        dipole_dist.pop(dummy2)
+        dipole_dist=np.delete(dipole_dist,dummy2)
+        print(len(dipole_dist))
         len_list=len_list-1
         ctracks+=ctracks
 
