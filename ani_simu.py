@@ -23,8 +23,8 @@ nevents=np.sum(poisson_dist)
 dipole_dist=np.load('../dipole_distribution_nbins16_strenght_1.npy')
 ##Sky with dipole_dist*10000*nevents/(Npix)
 Npix=healpy.nside2npix(NSIDE)
-sky=int(dipole_dist*10000*nevents/Npix) ## This is a healpy map
-
+sky=dipole_dist*10000*(nevents/Npix) ## This is a healpy map
+sky=sky.astype(int)
 ##Create the list of tracks
 #list_cr_ra=np.empty(sum(sky))
 #list_cr_dec=np.empty(sum(sky))
