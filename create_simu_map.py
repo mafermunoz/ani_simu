@@ -14,7 +14,7 @@ dipole_dist=np.load('../dipole_distribution_nbins16_strenght_1.npy')
 ##Sky with dipole_dist*10000*nevents/(Npix)
 Npix=healpy.nside2npix(NSIDE)
 nevents=5014862
-sky=dipole_dist*100*(nevents/Npix) ## This is a healpy map
+sky=dipole_dist*10*(nevents/Npix) ## This is a healpy map
 sky=sky.astype(int)
 fake_events=np.zeros((sky.sum(),3))
 count=0
