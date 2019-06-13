@@ -65,7 +65,7 @@ for i,x in enumerate(poisson_dist[:100]):
 
     a=orbit[i]
     print(a)
-    v=healpy.ang2vec(a[2],a[3],lonlat=True)
+    v=healpy.ang2vec(a[3],a[2],lonlat=True)
     search_radius=healpy.query_disc(NSIDE,v,np.deg2rad(fov))
     c2=SkyCoord(np.rad2deg(a[2])*u.degree,np.rad2deg(a[3])*u.degree,frame='galactic')
     print(c2)
