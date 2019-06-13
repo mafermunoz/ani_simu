@@ -12,7 +12,7 @@ import astropy.units as u
 
 
 ##Real Orbit for DAMPE for one year
-orbit=np.load("Orbit_dampe_2016.npy")
+orbit=np.load("/beegfs/dampe/users/mmunozsa/ani_random_average/ani_avg_method/DAMPE_2A_OBS_2016averge_pos_per_second.npy")
 NSIDE=16
 ##Poissonian distrbution with the real data information
 poisson_dist=np.load('../possion_mc_11.npy')
