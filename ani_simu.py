@@ -20,34 +20,36 @@ poisson_dist=np.load('../possion_mc_11.npy')
 nevents=np.sum(poisson_dist)
 #npos_sky=np.where(poisson_dist>0)
 ##Use/define a dipole  of strenght 0.1 +1
-dipole_dist=np.load('../dipole_distribution_nbins16_strenght_1.npy')
+dipole_dist=np.load('dipole_dist_events_ra_dec_ipix.npy')
 ##Sky with dipole_dist*10000*nevents/(Npix)
-Npix=healpy.nside2npix(NSIDE)
-sky=dipole_dist*100*(nevents/Npix) ## This is a healpy map
-sky=sky.astype(int)
+#Npix=healpy.nside2npix(NSIDE)
+#sky=dipole_dist*100*(nevents/Npix) ## This is a healpy map
+#sky=sky.astype(int)
 ##Create the list of tracks
 #list_cr_ra=np.empty(sum(sky))
 #list_cr_dec=np.empty(sum(sky))
 #list_cr_npix=np.empty(sum(sky))
-list_cr_ra=np.array([])
-list_cr_dec=np.array([])
-list_cr_npix=np.array([])
-cpointing=0
-ctracks=0
+#list_cr_ra=np.array([])
+#list_cr_dec=np.array([])
+#list_cr_npix=np.array([])
+#cpointing=0
+#ctracks=0
 
-print (np.sum(sky))
+#print (np.sum(sky))
 
-for i in range (Npix):
-    ra,dec=healpy.pix2ang(nside=NSIDE,ipix=i)
-    dummy=np.ones(sky[i])
-    list_cr_ra=np.append(list_cr_ra,dummy*ra)
-    list_cr_dec=np.append(list_cr_dec,dummy*dec)
-    list_cr_npix=np.append(list_cr_npix,dummy*i)
+#print('here')
+#for i in range (Npix):
+#    ra,dec=healpy.pix2ang(nside=NSIDE,ipix=i)
+#    dummy=np.ones(sky[i])
+#    list_cr_ra=np.append(list_cr_ra,dummy*ra)
+#    list_cr_dec=np.append(list_cr_dec,dummy*dec)
+#    list_cr_npix=np.append(list_cr_npix,dummy*i)
 
 
-list=np.stack((list_cr_ra,list_cr_dec,list_cr_npix),axis=1)
-len_list=len(list)
-print('len_list')
+#list=np.stack((list_cr_ra,list_cr_dec,list_cr_npix),axis=1)
+len_list=len(dipole_dist)
+
+print(len_list)
 ##The FOV of our simulated isntrument
 fov=60
 
@@ -79,7 +81,7 @@ for i,x in enumerate(poisson_dist[:100]):
         dec[ctracks]=list[dummy2,1]
         theta[ctracks]=offset[0].rad
         phi[ctracks]=offset[1].rad
-        list.pop(dummy2)
+        dipole_dist.pop(dummy2)
         len_list=len_list-1
         ctracks+=ctracks
 
