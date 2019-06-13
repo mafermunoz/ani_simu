@@ -26,5 +26,5 @@ for i in range (Npix):
         fake_events[a,:2]=ang
         fake_events[a,2]=i
     print(fake_events[count])
-    count=count+simu_int[i]
+    count=count+sky[i]
 np.save('dipole_dist_events_ra_dec_ipix.npy',fake_events)
