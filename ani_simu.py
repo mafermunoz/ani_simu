@@ -88,6 +88,6 @@ for i,x in enumerate(poisson_dist[:100]):
         phi[ctracks]=offset[1].rad
         dipole_dist[dummy2,2]=-55
         print(ctracks)
-        ctracks+=ctracks
+        ctracks+=1
 
 np.savez('simu_info_ani.npz',ra=ra,dec=dec,theta=theta,phi=phi)
