@@ -64,10 +64,11 @@ for i,x in enumerate(poisson_dist[:100]):
     if (x==0): continue
 
     a=orbit[i]
+    print(a)
     v=healpy.ang2vec(a[0],a[1])
     search_radius=healpy.query_disc(NSIDE,v,np.deg2rad(fov),inclusive=True)
     c2=SkyCoord(np.rad2deg(a[0])*u.degree,np.rad2deg(a[1])*u.degree,frame='fk5')
-
+    print(c2)
     #print(search_radius)
     for j in range (x): ## Loops over the given amount of measurements per second
         dummy2=np.random.randint(len_list)
@@ -81,6 +82,7 @@ for i,x in enumerate(poisson_dist[:100]):
             aa=search_radius[search_radius==dipole_dist[dummy2,2]]
 
         c1=SkyCoord(dipole_dist[dummy2,0]*u.degree,dipole_dist[dummy2,1]*u.degree,frame='fk5')
+        print(c1)
         offset=c2.spherical_offsets_to(c1)
         ra[ctracks]=dipole_dist[dummy2,0]
         dec[ctracks]=dipole_dist[dummy2,1]
