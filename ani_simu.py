@@ -35,6 +35,7 @@ list_cr_npix=np.array([])
 cpointing=0
 ctracks=0
 
+print (np.sum(sky))
 
 for i in range (Npix):
     ra,dec=healpy.pix2ang(nside=NSIDE,ipix=i)
@@ -46,6 +47,7 @@ for i in range (Npix):
 
 list=np.stack((list_cr_ra,list_cr_dec,list_cr_npix),axis=1)
 len_list=len(list)
+print('len_list')
 ##The FOV of our simulated isntrument
 fov=60
 
