@@ -18,7 +18,7 @@ sky=dipole_dist*10*(nevents/Npix) ## This is a healpy map
 sky=sky.astype(int)
 fake_events=np.zeros((sky.sum(),3))
 count=0
-for i in range (NPIX):
+for i in range (Npix):
     ang=healpy.pix2ang(NSIDE,i,lonlat=True)
     print(ang)
     for j in range (sky[i]):
