@@ -72,13 +72,13 @@ for i,x in enumerate(poisson_dist[:100]):
     for j in range (x): ## Loops over the given amount of measurements per second
         dummy2=np.random.randint(len_list)
 
-        while (list[dummy2,2] in search_radius)==False:
+        while (sky[dummy2,2] in search_radius)==False:
             dummy2=np.random.randint(len_list)
 
-        c1=SkyCoord(list[dummy2,0]*u.rad,list[dummy2,1]*u.rad,frame='fk5')
+        c1=SkyCoord(sky[dummy2,0]*u.rad,sky[dummy2,1]*u.rad,frame='fk5')
         offset=c2.spherical_offsets_to(c1)
-        ra[ctracks]=list[dummy2,0]
-        dec[ctracks]=list[dummy2,1]
+        ra[ctracks]=sky[dummy2,0]
+        dec[ctracks]=skyy[dummy2,1]
         theta[ctracks]=offset[0].rad
         phi[ctracks]=offset[1].rad
         dipole_dist.pop(dummy2)
