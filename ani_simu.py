@@ -85,6 +85,7 @@ for i,x in enumerate(poisson_dist[:100]):
         print(c1)
         offset=c2.spherical_offsets_to(c1)
         print(offset)
+        print(np.where(search_radius==dipole_dist[dummy2,2]))
         ra[ctracks]=dipole_dist[dummy2,0]
         dec[ctracks]=dipole_dist[dummy2,1]
         theta[ctracks]=offset[0].degree
