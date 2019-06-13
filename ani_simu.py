@@ -71,8 +71,9 @@ for i,x in enumerate(poisson_dist[:100]):
 
     for j in range (x): ## Loops over the given amount of measurements per second
         dummy2=np.random.randint(len_list)
+        aa=search_radius[search_radius==dipole_dist[dummy2,2]]
 
-        while (dipole_dist[dummy2,2] in search_radius)==False:
+        while (aa.size>0)==False:
             dummy2=np.random.randint(len_list)
 
         c1=SkyCoord(dipole_dist[dummy2,0]*u.deg,dipole_dist[dummy2,1]*u.deg,frame='fk5')
