@@ -66,7 +66,7 @@ for i,x in enumerate(poisson_dist[:100]):
     a=orbit[i]
     v=healpy.ang2vec(a[0],a[1])
     search_radius=healpy.query_disc(NSIDE,v,np.deg2rad(fov),inclusive=True)
-    c2=SkyCoord(a[0]*u.rad,a[1]*u.rad,frame='fk5')
+    c2=SkyCoord(np.rad2deg(a[0])*u.degree,np.rad2deg(a[1])*u.degree,frame='fk5')
 
     #print(search_radius)
     for j in range (x): ## Loops over the given amount of measurements per second
