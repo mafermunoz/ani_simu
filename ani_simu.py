@@ -33,7 +33,7 @@ dipole_dist=np.load('dipole_dist_events_ra_dec_ipix.npy')
 #list_cr_dec=np.array([])
 #list_cr_npix=np.array([])
 #cpointing=0
-#ctracks=0
+ctracks=0
 
 #print (np.sum(sky))
 
