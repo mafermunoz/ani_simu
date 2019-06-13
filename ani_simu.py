@@ -84,8 +84,8 @@ for i,x in enumerate(poisson_dist[:100]):
         offset=c2.spherical_offsets_to(c1)
         ra[ctracks]=dipole_dist[dummy2,0]
         dec[ctracks]=dipole_dist[dummy2,1]
-        theta[ctracks]=offset[0].rad
-        phi[ctracks]=offset[1].rad
+        theta[ctracks]=offset[0].degree
+        phi[ctracks]=offset[1].degree
         dipole_dist[dummy2,2]=-55
         print(ctracks)
         ctracks+=1
