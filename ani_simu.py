@@ -58,16 +58,17 @@ phi=np.empty(nevents)
 ra=np.empty(nevents)
 dec=np.empty(nevents)
 
-
-for i,x in enumerate(poisson_dist[:100]):
-    ##x tells us the number of tracks at  a given dampe position
-    if (x==0): continue
+for i,x in enumerate(poisson_dist):
+    if (i%10000)==0:
+        print(i)
+    if(x==0):continue
 
     a=orbit[i]
-    print(a)
-    v=healpy.ang2vec(a[2],a[3],lonlat=True)
+    v=healpy.ang2vec(np.rad2deg(a[0]),np.rad2deg(a[1]),lonlat=True)
     search_radius=healpy.query_disc(NSIDE,v,np.deg2rad(fov))
-    c2=SkyCoord(np.rad2deg(a[2])*u.degree,np.rad2deg(a[3])*u.degree,frame='galactic')
+    #print(search_radius.shape)
+
+    c2=SkyCoord(np.rad2deg(a[0])*u.degree,np.rad2deg(a[1])*u.degree,frame='fk5')
     print(c2)
     #print(search_radius)
     for j in range (x): ## Loops over the given amount of measurements per second
@@ -80,18 +81,19 @@ for i,x in enumerate(poisson_dist[:100]):
             #print('stuck')
             #print(dipole_dist[dummy2,2])
             aa=search_radius[search_radius==dipole_dist[dummy2,2]]
-
-        c1=SkyCoord(dipole_dist[dummy2,0]*u.degree,dipole_dist[dummy2,1]*u.degree,frame='galactic')
-        print(c1)
+        del c1,offset
+        c1=SkyCoord(dipole_dist[dummy2,0]*u.degree,dipole_dist[dummy2,1]*u.degree,frame='fk5')
+        #print(c1)
         offset=c2.spherical_offsets_to(c1)
-        print(offset)
-        print(np.where(search_radius==dipole_dist[dummy2,2]))
+        #print(offset)
+        #print(np.where(search_radius==dipole_dist[dummy2,2]))
         ra[ctracks]=dipole_dist[dummy2,0]
         dec[ctracks]=dipole_dist[dummy2,1]
         theta[ctracks]=offset[0].degree
         phi[ctracks]=offset[1].degree
         dipole_dist[dummy2,2]=-55
-        print(ctracks)
-        ctracks+=1
+        #print(ctracks)
+        ctracks=ctracks+1
+    del search_radius
 
 np.savez('simu_info_ani.npz',ra=ra,dec=dec,theta=theta,phi=phi)
