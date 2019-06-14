@@ -69,7 +69,7 @@ for i,x in enumerate(poisson_dist):
     #print(search_radius.shape)
 
     c2=SkyCoord(np.rad2deg(a[0])*u.degree,np.rad2deg(a[1])*u.degree,frame='fk5')
-    print(c2)
+    #print(c2)
     #print(search_radius)
     for j in range (x): ## Loops over the given amount of measurements per second
         dummy2=np.random.randint(len_list)
@@ -81,7 +81,7 @@ for i,x in enumerate(poisson_dist):
             #print('stuck')
             #print(dipole_dist[dummy2,2])
             aa=search_radius[search_radius==dipole_dist[dummy2,2]]
-        del c1,offset
+
         c1=SkyCoord(dipole_dist[dummy2,0]*u.degree,dipole_dist[dummy2,1]*u.degree,frame='fk5')
         #print(c1)
         offset=c2.spherical_offsets_to(c1)
@@ -94,6 +94,7 @@ for i,x in enumerate(poisson_dist):
         dipole_dist[dummy2,2]=-55
         #print(ctracks)
         ctracks=ctracks+1
+        del c1,offset
     del search_radius
 
 np.savez('simu_info_ani.npz',ra=ra,dec=dec,theta=theta,phi=phi)
