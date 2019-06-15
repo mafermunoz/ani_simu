@@ -61,6 +61,8 @@ dec=np.empty(nevents)
 for i,x in enumerate(poisson_dist):
     if (i%100)==0:
         print(i)
+    if(i>0 and i%10000==0):
+        np.savez('simu_info_ani2'+i,ra=ra,dec=dec,theta=theta,phi=phi)
     if(x==0):continue
 
     a=orbit[i]
@@ -95,6 +97,5 @@ for i,x in enumerate(poisson_dist):
         #print(ctracks)
         ctracks=ctracks+1
         del c1,offset
-    del search_radius
 
-np.savez('simu_info_ani2.npz',ra=ra,dec=dec,theta=theta,phi=phi)
+    del search_radius
