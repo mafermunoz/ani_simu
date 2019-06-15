@@ -99,3 +99,5 @@ for i,x in enumerate(poisson_dist):
         del c1,offset
 
     del search_radius
+
+np.savez('simu_info_ani3_all.npz',ra=ra,dec=dec,theta=theta,phi=phi)
