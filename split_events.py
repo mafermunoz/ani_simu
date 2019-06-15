@@ -20,7 +20,7 @@ np.save('../poison_2016_j100',p_100n)
 
 dipole_dist=np.load('dipole_dist_events_ra_dec_ipix.npy')
 np.random.shuffle(dipole_dist)
-d_100=np.array_split(dipole_dist)
+d_100=np.array_split(dipole_dist,100)
 d_100n=np.array(d_100)
 print(d_100n.shape)
 

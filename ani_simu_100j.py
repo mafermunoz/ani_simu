@@ -10,15 +10,20 @@ import astropy.units as u
 
 
 ##Real Orbit for DAMPE for one year
-orbit=np.load("/beegfs/dampe/users/mmunozsa/ani_random_average/ani_avg_method/DAMPE_2A_OBS_2016averge_pos_per_second.npy")
+NJOB=
+orbit=np.load("../orbit_2016_j100.npy")
+orbit=orbit[NJOB]
+
 NSIDE=16
 ##Poissonian distrbution with the real data information
-poisson_dist=np.load('../possion_mc_11.npy')
+poisson_dist=np.load('../poison_2016_j100.npy')
+poisson_dist=poisson_dist[NJOB]
 #nevents=sum of values from the possonian distribution.
 nevents=np.sum(poisson_dist)
 #npos_sky=np.where(poisson_dist>0)
 ##Use/define a dipole  of strenght 0.1 +1
-dipole_dist=np.load('dipole_dist_events_ra_dec_ipix.npy')
+dipole_dist=np.load('../dipole_dist_2016_j100.npy')
+dipole_dist=dipole_dist[NJOB]
 ##Sky with dipole_dist*10000*nevents/(Npix)
 #Npix=healpy.nside2npix(NSIDE)
 #dipole_dist=dipole_dist*100*(nevents/Npix) ## This is a healpy map
@@ -60,7 +65,7 @@ for i,x in enumerate(poisson_dist):
     if (i%10000)==0:
         print(i)
     if(i>0 and i%10000==0):
-        np.savez('simu_info_ani3'+str(i),ra=ra,dec=dec,theta=theta,phi=phi)
+        np.savez('simu_info_ani4'+str(NJOB)+'_'+str(i),ra=ra,dec=dec,theta=theta,phi=phi)
     if(x==0):continue
 
     a=orbit[i]
@@ -98,4 +103,4 @@ for i,x in enumerate(poisson_dist):
 
     del search_radius
 
-np.savez('simu_info_ani3_all.npz',ra=ra,dec=dec,theta=theta,phi=phi)
+np.savez('simu_info_ani4_all'+str(NJOB),ra=ra,dec=dec,theta=theta,phi=phi)
