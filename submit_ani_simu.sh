@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH --partition=rhel6-verylong
+#SBATCH --partition=rhel6-long
 #SBATCH --ntasks=1
 #SBATCH --mem=30G
-#SBATCH --job-name=Ani
+#SBATCH --job-name=ani_sim
 
 
 export HOME=/atlas/users/mmunozsa/
