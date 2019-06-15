@@ -10,7 +10,7 @@ import astropy.units as u
 
 
 ##Real Orbit for DAMPE for one year
-NJOB=
+NJOB=sys.argv[1]
 orbit=np.load("../orbit_2016_j100.npy")
 orbit=orbit[NJOB]
 
