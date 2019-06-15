@@ -59,10 +59,10 @@ ra=np.empty(nevents)
 dec=np.empty(nevents)
 
 for i,x in enumerate(poisson_dist):
-    if (i%100)==0:
+    if (i%10000)==0:
         print(i)
     if(i>0 and i%10000==0):
-        np.savez('simu_info_ani2'+i,ra=ra,dec=dec,theta=theta,phi=phi)
+        np.savez('simu_info_ani2'+str(i),ra=ra,dec=dec,theta=theta,phi=phi)
     if(x==0):continue
 
     a=orbit[i]
