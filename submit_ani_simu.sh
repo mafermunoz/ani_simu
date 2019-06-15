@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --partition=rhel6-long
+#SBATCH --partition=rhel6-verylong
 #SBATCH --ntasks=1
 #SBATCH --mem=30G
 #SBATCH --job-name=Ani
